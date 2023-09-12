@@ -24,13 +24,13 @@ import (
 	"path"
 	"time"
 
-	"github.com/apolloconfig/agollo/v4/component/log"
-	"github.com/apolloconfig/agollo/v4/constant"
-	"github.com/apolloconfig/agollo/v4/env"
-	"github.com/apolloconfig/agollo/v4/env/config"
-	"github.com/apolloconfig/agollo/v4/extension"
-	"github.com/apolloconfig/agollo/v4/protocol/http"
-	"github.com/apolloconfig/agollo/v4/utils"
+	"github.com/nthsky/agollo/v4/component/log"
+	"github.com/nthsky/agollo/v4/constant"
+	"github.com/nthsky/agollo/v4/env"
+	"github.com/nthsky/agollo/v4/env/config"
+	"github.com/nthsky/agollo/v4/extension"
+	"github.com/nthsky/agollo/v4/protocol/http"
+	"github.com/nthsky/agollo/v4/utils"
 )
 
 const (
@@ -113,6 +113,10 @@ func (a *asyncApolloConfig) notifyRemoteConfig(appConfigFunc func() config.AppCo
 		Secret: appConfig.Secret,
 	}
 	connectConfig.Timeout = notifyConnectTimeout
+	if appConfig.ClientConfig.Auth.Enable {
+		connectConfig.AuthKey = appConfig.ClientConfig.Auth.AuthKey
+		connectConfig.AuthSecret = appConfig.ClientConfig.Auth.AuthSecret
+	}
 	notifies, err := http.RequestRecovery(appConfig, connectConfig, &http.CallBack{
 		SuccessCallBack: func(responseBody []byte, callback http.CallBack) (interface{}, error) {
 			return toApolloConfig(responseBody)

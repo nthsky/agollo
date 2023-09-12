@@ -25,19 +25,19 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolloconfig/agollo/v4/agcache/memory"
-	"github.com/apolloconfig/agollo/v4/env/config"
-	"github.com/apolloconfig/agollo/v4/env/server"
+	"github.com/nthsky/agollo/v4/agcache/memory"
+	"github.com/nthsky/agollo/v4/env/config"
+	"github.com/nthsky/agollo/v4/env/server"
 
-	_ "github.com/apolloconfig/agollo/v4/env/file/json"
-	"github.com/apolloconfig/agollo/v4/extension"
-	"github.com/apolloconfig/agollo/v4/storage"
+	_ "github.com/nthsky/agollo/v4/env/file/json"
+	"github.com/nthsky/agollo/v4/extension"
+	"github.com/nthsky/agollo/v4/storage"
 	. "github.com/tevid/gohamcrest"
 )
 
 const testDefaultNamespace = "application"
 
-//init param
+// init param
 func init() {
 	extension.SetCacheFactory(&memory.DefaultCacheFactory{})
 }

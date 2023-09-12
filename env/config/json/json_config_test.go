@@ -22,8 +22,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/apolloconfig/agollo/v4/env/config"
-	"github.com/apolloconfig/agollo/v4/utils"
+	"github.com/nthsky/agollo/v4/env/config"
+	"github.com/nthsky/agollo/v4/utils"
 	. "github.com/tevid/gohamcrest"
 )
 

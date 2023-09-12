@@ -21,7 +21,7 @@ import (
 	"time"
 )
 
-//ConnectConfig 网络请求配置
+// ConnectConfig 网络请求配置
 type ConnectConfig struct {
 	//设置到http.client中timeout字段
 	Timeout time.Duration
@@ -33,4 +33,7 @@ type ConnectConfig struct {
 	AppID string
 	//密钥
 	Secret string
+	// auth
+	AuthKey    string
+	AuthSecret string
 }
